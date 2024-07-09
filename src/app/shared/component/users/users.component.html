@@ -1,12 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <button class="btn btn-info" routerLink="add-form">Add new User</button>
+            <button class="btn btn-info" [routerLink]="['add-form']">Add new User</button>
             <ul class="list-group">
-                <li class="list-group-item" *ngFor="let user of userarr" [routerLink]="['/users',user.userId]">
+                <li class="list-group-item" *ngFor="let user of userarr" [routerLink]="['/users',user.userId]"
+                    routerLinkActive="active">
                     {{user.userName}}
                 </li>
             </ul>
+        </div>
+        <div class="col-md-8">
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

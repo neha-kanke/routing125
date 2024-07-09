@@ -20,6 +20,7 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createuserform()
+    this.iseditandpatch()
   }
 
 
@@ -46,10 +47,6 @@ export class UserFormComponent implements OnInit {
       .subscribe(res => {
         this.userid = res['userid']
       })
-
-
-
-      
     if(this.userid) {
       this.iseditmode = true
       this.userproj = this._userservice.singleobj(this.userid)
@@ -60,6 +57,12 @@ export class UserFormComponent implements OnInit {
   }
 
   onupdateuser() {
+   if(this.userform.valid){
+    let updateobj={...this.userform.value,userId:this.userid}
+    this._userservice.updateobj(updateobj)
+    this.userform.reset()
+    this._Router.navigate(['users'])
+   }
 
   }
 

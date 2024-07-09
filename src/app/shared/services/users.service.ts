@@ -10,7 +10,7 @@ export class UsersService {
   constructor() { }
 
 
-  
+
   getalldata() {
     return this.getalluserdata
   }
@@ -23,5 +23,11 @@ export class UsersService {
   singleobj(prodid: string) {
     return this.getalluserdata.find((res) => res.userId === prodid)!
 
+  }
+
+  updateobj(update:Iusers){
+    let getindex=this.getalluserdata.findIndex((res)=>res.userId===update.userId)
+    this.getalluserdata[getindex].userName=update.userName
+    this.getalluserdata[getindex].userRole=update.userRole
   }
 }

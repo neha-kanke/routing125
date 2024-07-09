@@ -36,18 +36,23 @@ const routes: Routes = [
   },
 
   {
-    path: 'users', component: UsersComponent
+    path: 'users', component: UsersComponent,
+    title:'users',
+    canActivate:[AuthgaurdService],
+    children:[
+      {
+        path: 'add-form', component: UserFormComponent
+      },
+      {
+        path: ':userid', component: UserComponent
+      }, 
+      
+      {
+        path: ':userid/edit', component: UserFormComponent
+      }
+    ]
   },
-  {
-    path: 'users/add-form', component: UserFormComponent
-  },
-  {
-    path: 'users/:userid', component: UserComponent
-  }, 
   
-  {
-    path: 'users/:userid/edit', component: UserFormComponent
-  }
 
 
 ];
